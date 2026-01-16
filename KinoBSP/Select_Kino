@@ -1,0 +1,99 @@
+-- 1. Geben Sie alle Filme aus.
+Select * from Movie;
+
+--2. Geben Sie FilmID, Titel und Genre aller Filme aus.
+Select MID, Title, Genre from Movie;
+
+--3. Listen Sie alle Filme mit Titel und Genre, sortiert nach Genre und dann Titel.
+Select Title, Genre from Movie
+Order by Title, Genre Asc;
+
+--4. Zeigen Sie alle Filme, die das Genre „Drama“ haben.
+Select * From Movie
+Where Genre == "Drama";
+
+--5. Zeigen Sie alle Filme, die „Drama“ oder „Komödie“ sind, die neuesten zuerst.
+Select * From Movie
+Where Genre == "Drama" or Genre == "Komödie"
+Order by SpawnYear desc;
+
+
+--6. Zeigen Sie alle Filme, die zwischen 2000 und 2010 erschienen sind, nach Jahr aufstei-gend.
+Select * from Movie
+Where SpawnYear < 2000 and SpawnYear > 2010
+Order by SpawnYear asc;
+
+--7. Zeigen Sie Titel und Dauer aller Filme, die mindestens 120 Minuten dauern, die längstenzuerst.
+Select title, Length from Movie
+Where length >= 120
+Order by length desc;
+
+--8. Zeigen Sie alle Filme, die nicht 120 Minuten dauern, nach Dauer und Titel sortiert. 
+----> Hab nur Fime mit längerer Dauer hab deswegen 140 als Wert
+Select * from Movie
+Where length < 140
+Order by length, title asc;
+
+--9. Zeigen Sie alle Filme, deren Genre mit „D“ beginnt.
+Select * from Movie
+Where Genre like 'd%';
+
+--10. Geben Sie alle Kinos aus.
+Select * from Kino;
+
+--11. Zeigen Sie Name und Stadt aller Kinos, sortiert nach Stadt und dann Name.
+Select Name,Town from Kino
+Order by town, name asc;
+
+--12. Zeigen Sie alle Kinos in der Stadt „Graz“.
+--Hab kein Graz nehme dafür Berlin
+Select * From Kino
+Where Town == "Berlin";
+
+--13. Zeigen Sie alle Kinos, deren Kette „Cine“ im Namen enthält.
+Select * From Kino
+Where Name like ('%cine%');
+--14. Geben Sie alle Säle aus.#
+Select * from  CinemaHall;
+
+--15. Zeigen Sie alle Säle mit mindestens 100 Sitzplätzen (inkl. KinoID), die größten zuerst.
+Select * from CinemaHall
+Where places >= 100;
+
+--16. Zeigen Sie alle Säle mit 60 bis 90 Sitzplätzen, sortiert nach Sitzplätzen und Saalnummer.
+--Bei mir sind alle Größer deswegen nehme ich 120-150
+Select * from CinemaHall
+Where places > 120 and places < 150;
+--17. Zeigen Sie alle Säle, bei denen die Reihen erhöht sind, sortiert nach KinoID und Nummer.
+Select * from CinemaHall
+Where UPsidRow == 1; --Boolean ist hier nicht True oder False sondern 1 oder 0 Keine Ahnung wieso
+
+--18. Zeigen Sie alle Vorstellungen, die höchstens 10 € kosten, sortiert nach Preis und Start-zeit.
+Select * from Show
+Where Price <= 10
+Order by Price, Date asc;
+
+--19. Geben Sie aus, welche Filme welche Sprachen haben.
+
+Select * from  Movie_Language;
+--20. Geben Sie aus, welche Filme welche Schauspieler haben.
+Select * from  Movie_Actor;
+
+--21. Zeigen Sie alle Sprache-Zuordnungen für FilmID 3, aufsteigend nach SpracheID.
+Select * From Movie_Language
+Where LanID == 3
+Order by LanID asc;
+
+--22. Zeigen Sie alle Film-Zuordnungen für SpracheID = 2, aufsteigend nach FilmID.
+Select * From Movie_Language
+Where LanID ==2
+Order by MID asc;
+
+--23. Zeigen Sie alle Schauspieler-Zuordnungen für FilmID = 6, absteigend nach FilmID.
+Select * From Movie_Actor 
+Where MID == 6
+Order by MID desc;
+--24. Zeigen Sie alle Film-Zuordnungen für SchauspielerID = 5, absteigend nach FilmID.
+Select * From Movie_Actor 
+Where ACID == 5
+Order by MID desc;

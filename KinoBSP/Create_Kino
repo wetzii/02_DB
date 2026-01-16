@@ -1,0 +1,53 @@
+Create Table Kino(
+ KID INTEGER not null Primary Key Autoincrement,
+ Name VarCHar(50) ,
+ Town VarCHar(50),
+ Company VarChar(50)
+);
+
+Create Table CinemaHall(
+HID Integer not null Primary Key Autoincrement,
+Places Integer,
+UPsidRow Boolean,
+KID Integer References Kino(KID)
+);
+
+CREATE TABLE Show(
+  SID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  Price DOUBLE,
+  Date DATETIME,
+  HID INTEGER REFERENCES CinemaHall(HID),
+  MID INTEGER REFERENCES Movie(MID)
+);
+
+CReate Table Movie(
+MID Integer not null Primary Key Autoincrement,
+Title varchar(50),
+Genre varchar(50),
+Length Integer,
+SpawnYear Year
+);
+
+
+Create Table Actor(
+ACID Integer not null Primary Key Autoincrement,
+Name varchar(50),
+AGe Integer
+);
+Create Table Language(
+LanID Integer not null Primary Key Autoincrement,
+LanName varChar(50)
+);
+
+Create Table Movie_Actor(
+MAID Integer not null Primary Key Autoincrement,
+MID Integer References Movie(MID),
+ACID Integer References Actor(ACID)
+);
+CREATE TABLE Movie_Language(
+  MLID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  MID INTEGER REFERENCES Movie(MID),
+  LanID INTEGER REFERENCES Language(LanID)
+);
+
+
