@@ -1,53 +1,60 @@
-Create Table Kino(
- KID INTEGER not null Primary Key Autoincrement,
- Name VarCHar(50) ,
- Town VarCHar(50),
- Company VarChar(50)
+
+CREATE TABLE Kino (
+  KID INTEGER PRIMARY KEY AUTOINCREMENT,
+  Name VARCHAR(50),
+  Town VARCHAR(50),
+  Company VARCHAR(50)
 );
 
-Create Table CinemaHall(
-HID Integer not null Primary Key Autoincrement,
-Places Integer,
-UPsidRow Boolean,
-KID Integer References Kino(KID)
+CREATE TABLE CinemaHall (
+  HID INTEGER PRIMARY KEY AUTOINCREMENT,
+  Places INTEGER,
+  UpsidRow INTEGER,
+  KID INTEGER,
+  FOREIGN KEY (KID) REFERENCES Kino(KID)
 );
 
-CREATE TABLE Show(
-  SID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-  Price DOUBLE,
+CREATE TABLE Movie (
+  MID INTEGER PRIMARY KEY AUTOINCREMENT,
+  Title VARCHAR(50),
+  Genre VARCHAR(50),
+  Length INTEGER,
+  SpawnYear INTEGER
+);
+
+CREATE TABLE Actor (
+  ACID INTEGER PRIMARY KEY AUTOINCREMENT,
+  Name VARCHAR(50),
+  Age INTEGER
+);
+
+CREATE TABLE Language (
+  LanID INTEGER PRIMARY KEY AUTOINCREMENT,
+  LanName VARCHAR(50)
+);
+
+CREATE TABLE Showtime (
+  SID INTEGER PRIMARY KEY AUTOINCREMENT,
+  Price REAL,
   Date DATETIME,
-  HID INTEGER REFERENCES CinemaHall(HID),
-  MID INTEGER REFERENCES Movie(MID)
+  HID INTEGER,
+  MID INTEGER,
+  FOREIGN KEY (HID) REFERENCES CinemaHall(HID),
+  FOREIGN KEY (MID) REFERENCES Movie(MID)
 );
 
-CReate Table Movie(
-MID Integer not null Primary Key Autoincrement,
-Title varchar(50),
-Genre varchar(50),
-Length Integer,
-SpawnYear Year
+CREATE TABLE Movie_Actor (
+  MAID INTEGER PRIMARY KEY AUTOINCREMENT,
+  MID INTEGER,
+  ACID INTEGER,
+  FOREIGN KEY (MID) REFERENCES Movie(MID),
+  FOREIGN KEY (ACID) REFERENCES Actor(ACID)
 );
 
-
-Create Table Actor(
-ACID Integer not null Primary Key Autoincrement,
-Name varchar(50),
-AGe Integer
+CREATE TABLE Movie_Language (
+  MLID INTEGER PRIMARY KEY AUTOINCREMENT,
+  MID INTEGER,
+  LanID INTEGER,
+  FOREIGN KEY (MID) REFERENCES Movie(MID),
+  FOREIGN KEY (LanID) REFERENCES Language(LanID)
 );
-Create Table Language(
-LanID Integer not null Primary Key Autoincrement,
-LanName varChar(50)
-);
-
-Create Table Movie_Actor(
-MAID Integer not null Primary Key Autoincrement,
-MID Integer References Movie(MID),
-ACID Integer References Actor(ACID)
-);
-CREATE TABLE Movie_Language(
-  MLID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-  MID INTEGER REFERENCES Movie(MID),
-  LanID INTEGER REFERENCES Language(LanID)
-);
-
-

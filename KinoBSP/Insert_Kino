@@ -1,5 +1,5 @@
 INSERT INTO Kino (Name, Town, Company) VALUES
-('CineStar', 'Berlin', 'CineGroup'),
+('Cineplexx', 'Leoben', 'Cineplexx'),
 ('MovieWorld', 'Hamburg', 'MW GmbH'),
 ('FilmPalast', 'München', 'FP AG'),
 ('KinoCity', 'Köln', 'KC Holding'),
@@ -23,7 +23,7 @@ INSERT INTO CinemaHall (Places, UPsidRow, KID) VALUES
 (300, FALSE, 9);
 
 INSERT INTO Movie (Title, Genre, Length, SpawnYear) VALUES
-('Inception', 'Sci-Fi', 148, 2010),
+('Top-Gun Maverick', 'Action', 148, 2022),
 ('Titanic', 'Drama', 195, 1997),
 ('The Matrix', 'Sci-Fi', 136, 1999),
 ('Gladiator', 'Action', 155, 2000),
@@ -34,7 +34,7 @@ INSERT INTO Movie (Title, Genre, Length, SpawnYear) VALUES
 ('Pulp Fiction', 'Crime', 154, 1994),
 ('The Dark Knight', 'Action', 152, 2008);
 
-INSERT INTO Show (Price, Date, HID, MID) VALUES
+INSERT INTO Showtime(Price, Date, HID, MID) VALUES
 (10.50, '2024-01-10 18:00', 1, 1),
 (12.00, '2024-01-11 20:00', 2, 2),
 (9.50,  '2024-01-12 17:30', 3, 3),
@@ -47,6 +47,7 @@ INSERT INTO Show (Price, Date, HID, MID) VALUES
 (12.50, '2024-01-19 21:15', 10, 10);
 
 INSERT INTO Actor (Name, Age) VALUES
+('Tom Cruise', 63),
 ('Leonardo DiCaprio', 49),
 ('Kate Winslet', 48),
 ('Keanu Reeves', 59),
@@ -55,12 +56,11 @@ INSERT INTO Actor (Name, Age) VALUES
 ('Joaquin Phoenix', 50),
 ('Matthew McConaughey', 55),
 ('Marlon Brando', 80),
-('John Travolta', 70),
-('Christian Bale', 50);
+('John Travolta', 70);
 
 INSERT INTO Language (LanName) VALUES
+('Deutsch'),
 ('English'),
-('German'),
 ('French'),
 ('Spanish'),
 ('Italian'),

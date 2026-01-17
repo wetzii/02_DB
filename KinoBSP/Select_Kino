@@ -46,9 +46,9 @@ Select Name,Town from Kino
 Order by town, name asc;
 
 --12. Zeigen Sie alle Kinos in der Stadt „Graz“.
---Hab kein Graz nehme dafür Berlin
+--Hab kein Graz nehme dafür Leoben
 Select * From Kino
-Where Town == "Berlin";
+Where Town == "Leoben";
 
 --13. Zeigen Sie alle Kinos, deren Kette „Cine“ im Namen enthält.
 Select * From Kino
@@ -69,7 +69,7 @@ Select * from CinemaHall
 Where UPsidRow == 1; --Boolean ist hier nicht True oder False sondern 1 oder 0 Keine Ahnung wieso
 
 --18. Zeigen Sie alle Vorstellungen, die höchstens 10 € kosten, sortiert nach Preis und Start-zeit.
-Select * from Show
+Select * from Showtime
 Where Price <= 10
 Order by Price, Date asc;
 
