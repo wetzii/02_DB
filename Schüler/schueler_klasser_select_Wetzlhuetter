@@ -1,0 +1,7 @@
+Select * FROM Schueler
+--WHERE Lieblingsfach == 'BET'
+Order BY GebJahr DESC, Name ASC ;
+
+Select * From Klasse 
+Where Jahrgang == 3
+OR Jahrgang == 2;     

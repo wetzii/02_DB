@@ -1,0 +1,48 @@
+SELECT * FROM Snacks;
+
+SELECT * From Hersteller
+Where Land == 'Deutschland';
+
+SELECT * From Hersteller
+Where Land == 'Österreich' OR
+Land =='Schweiz';
+
+SELECT Bezeichnung, Kategorie From Snacks;
+
+SELECT * FROM Snack
+WHERE Preis > 2;
+
+SELECT * FROM Snack
+WHERE HID == 2;
+
+SELECT * FROM Snack
+WHERE Preis < 1.5;
+
+SELECT * FROM Snack
+WHERE Kategorie == 'Schokolade';
+
+SELECT * FROM Snack
+WHERE Kategorie == 'Chips';
+
+SELECT * FROM Snack
+WHERE Kategorie 
+OR Preis > 3;
+
+SELECT * FROM Snack
+WHERE Preis < 1;
+
+SELECT * FROM Snack
+ORDER BY Bezeichnung ASC;
+
+SELECT * FROM Snack
+WHERE Preis > 3;
+
+SELECT * FROM Snack
+WHERE HID = 3 
+AND Kategorie = 'Schokolade';
+
+
+
+
+
+ 

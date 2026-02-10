@@ -1,0 +1,139 @@
+INSERT INTO Halle (Name, Type, Location) VALUES
+('Kletter Akademie','Beides','St.Barbara'),
+('Fels & Furious','Outdoor','Graz'),
+('Peak Performance','Beides','Linz'),
+('Vertical Limits','Indoor','Salzburg'),
+('Stone Monkey','Indoor','Innsbruck'),
+('Crux Deluxe','Outdoor','Klagenfurt'),
+('Gravity Check','Beides','Villach'),
+('Send It Hall','Indoor','St. Pölten'),
+('Chalk Addiction','Outdoor','Bregenz'),
+('The Climbing Lab','Indoor','Wels'),
+('Wall Street','Beides','Steyr'),
+('Hang On!','Indoor','Leoben'),
+('Rock Solid','Outdoor','Kapfenberg'),
+('Up You Go','Indoor','Amstetten'),
+('Last Try','Beides','Krems');
+
+INSERT INTO Sektor (SectorNiveau, name, HID) VALUES
+('leicht','Kinder Chaos',1),
+('mittel','Plattenparty',1),
+('schwer','Überhang des Todes',2),
+('mittel','Speedy Gonzales',2),
+('leicht','Warmup Zone',3),
+('schwer','Power Dungeon',3),
+('mittel','Technik Terror',4),
+('leicht','Rentner Wand',5),
+('schwer','Campus Horror',6),
+('mittel','Balance Akt',7),
+('leicht','Chill Area',8),
+('schwer','Fingerkiller',9),
+('mittel','Koordinationshölle',10),
+('leicht','Noob Corner',11),
+('schwer','Projekt Friedhof',12);
+
+INSERT INTO Route (RouteName, Stil, RouteNiveau, SrewDate, SID) VALUES
+('Ninja Turtle','Toprope','6a','2023-12-01',1),
+('Rutsch mir den Fuß','Vorstieg','5c','2023-12-02',2),
+('Kein Chalk mehr','Toprope','6a','2023-12-03',3),
+('Pumpstation','Vorstieg','6b','2023-12-04',4),
+('Noch ein Griff','Toprope','6c','2023-12-05',5),
+('Warum tu ich mir das an','Vorstieg','7a','2023-12-06',6),
+('Nur ein Versuch','Toprope','7a','2023-12-07',7),
+('Der Ellenbogencheck','Vorstieg','7b','2023-12-08',8),
+('Spaghetti Beine','Toprope','7b','2023-12-09',9),
+('Final Boss','Vorstieg','7c','2023-12-10',10),
+('Platte des Grauens','Toprope','6a','2023-12-11',11),
+('Sandpapier','Vorstieg','6b','2023-12-12',12),
+('Slip n Fall','Toprope','6c','2023-12-13',13),
+('Projekt Nummer 12','Vorstieg','7a','2023-12-14',14),
+('Send or Cry','Toprope','7b','2023-12-15',15);
+
+INSERT INTO Climber (Name, EcperienceLevel, BYear) VALUES
+('Nino Schneider','Anfänger',2010),
+('Anna Leitner','Fortgeschritten',1999),
+('Lukas Berger','Profi',1996),
+('Sophie Gruber','Anfänger',2002),
+('Paul Moser','Fortgeschritten',1998),
+('Laura König','Profi',1995),
+('David Steiner','Anfänger',2003),
+('Julia Fink','Fortgeschritten',1997),
+('Tobias Hofer','Profi',1994),
+('Miriam Aigner','Anfänger',2004),
+('Florian Baumann','Fortgeschritten',1996),
+('Katharina Wolf','Profi',1993),
+('Simon Pichler','Anfänger',2005),
+('Lea Brandner','Fortgeschritten',1998),
+('Jonas Mayr','Profi',1992);
+
+INSERT INTO Climb (Trys, Stil, ClimbDay) VALUES
+(3,'Toprope','2024-01-01'),
+(1,'Onsight','2024-01-02'),
+(2,'Vorstieg','2024-01-03'),
+(4,'Toprope','2024-01-04'),
+(1,'Flash','2024-01-05'),
+(3,'Vorstieg','2024-01-06'),
+(2,'Toprope','2024-01-07'),
+(1,'Onsight','2024-01-08'),
+(5,'Vorstieg','2024-01-09'),
+(2,'Toprope','2024-01-10'),
+(1,'Flash','2024-01-11'),
+(3,'Vorstieg','2024-01-12'),
+(2,'Toprope','2024-01-13'),
+(1,'Onsight','2024-01-14'),
+(4,'Vorstieg','2024-01-15');
+
+INSERT INTO Abo (Price, name, ValidRange) VALUES
+(15,'Schnupperkarte',1),
+(45,'Monatskarte',30),
+(120,'Jahreskarte',365),
+(60,'10er Block',180),
+(80,'3-Monatskarte',90),
+(150,'Premium Jahr',365),
+(25,'Abendkarte',1),
+(35,'Student Monat',30),
+(100,'Halbjahr',180),
+(10,'Probetraining',1),
+(50,'Wochenkarte',7),
+(70,'Familienkarte',30),
+(200,'VIP Jahr',365),
+(30,'Ferienkarte',14),
+(90,'Quartalskarte',120);
+
+INSERT INTO Course (MaxPeople, Title, STartDate, Niveau, HID) VALUES
+(10,'Sicherungs Kurs mit GriGri','2024-02-01','Anfänger',1),
+(8,'Nie wieder Angst','2024-02-05','Anfänger',2),
+(12,'Sauber Vorsteigen','2024-03-01','Fortgeschritten',3),
+(6,'Power ohne Ende','2024-03-10','Profi',4),
+(10,'Kinder hoch hinaus','2024-04-01','Anfänger',5),
+(8,'Bouldern Basics','2024-04-10','Anfänger',6),
+(12,'Lead Technik','2024-05-01','Fortgeschritten',7),
+(6,'Wettkampfmodus','2024-05-10','Profi',8),
+(10,'Plattentricks','2024-06-01','Fortgeschritten',9),
+(8,'Balance Master','2024-06-10','Anfänger',10),
+(12,'Speed Training','2024-07-01','Fortgeschritten',11),
+(6,'Finger aus Stahl','2024-07-10','Profi',12),
+(10,'Outdoor Basics','2024-08-01','Anfänger',13),
+(8,'Alpin Start','2024-08-10','Fortgeschritten',14),
+(6,'Elite Performance','2024-09-01','Profi',15);
+
+INSERT INTO Climer_Abo (CLID, AID) VALUES
+(1,2),(2,3),(3,6),(4,1),(5,4),
+(6,7),(7,2),(8,5),(9,3),(10,1),
+(11,4),(12,6),(13,2),(14,5),(15,3);
+
+
+INSERT INTO Climb_Climber (CLIMBID, CLID) VALUES
+(1,1),(2,2),(3,3),(4,4),(5,5),
+(6,6),(7,7),(8,8),(9,9),(10,10),
+(11,11),(12,12),(13,13),(14,14),(15,15);
+
+INSERT INTO Climb_Route (CLIMBID, RID) VALUES
+(1,1),(2,2),(3,3),(4,4),(5,5),
+(6,6),(7,7),(8,8),(9,9),(10,10),
+(11,11),(12,12),(13,13),(14,14),(15,15);
+
+
+
+
+

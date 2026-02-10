@@ -1,0 +1,79 @@
+--1. Geben Sie alle Kletterhallen aus.
+Select * from Halle;
+
+--2. Geben Sie alle Sektoren einer bestimmten Halle aus.
+Select * from Sektor
+Where HID == 1;
+
+--3. Geben Sie alle Routen mit Grad ≥ 7a aus.
+--Neu --3. Alle Routen, deren Grad mit 7, 8, 9, 10, 11 oder 12 beginnt (>= 7a)
+Select * from Route 
+Where RouteNiveau LIKE '7%' 
+   OR RouteNiveau LIKE '8%' 
+   OR RouteNiveau LIKE '9%' 
+   OR RouteNiveau LIKE '10%' 
+   OR RouteNiveau LIKE '11%' 
+   OR RouteNiveau LIKE '12%';
+
+
+--4. Geben Sie alle Routen eines bestimmten Stils (z.B. 'Bouldern') aus.
+Select * from Route
+Where Stil = 'Toprope'; --Hab kein Bouldern nehme deswegen Toprope
+
+--5. Geben Sie alle Kletterer, die als Erfahrung 'Fortgeschritten' haben.
+Select * From Climber 
+Where EcperienceLevel == 'Fortgeschritten';
+
+--6. Geben Sie alle Abos mit Preis über 50 € aus.
+Select * From Abo
+Where price > 50;
+
+--7. Geben Sie alle aktiven Abos eines bestimmten Kletterers aus.
+Select * From Climer_Abo
+Where CLID = 2;
+
+--8. Geben Sie alle Kurse in einer bestimmten Halle (z.B. Kletterzentrum Leoben)
+Select * from Course
+Where HID = 1;
+
+--9. Geben Sie alle Teilnehmer eines bestimmten Kurses aus.
+--Hab ich nicht weil steht nicht so in der Angabe (glaube)
+
+--10. Geben Sie alle Begehungen einer bestimmten Route aus.
+Select * from Climb_Route
+Where RID == 1;
+--11. Geben Sie alle Begehungen eines bestimmten Kletterers aus.
+Select * from Climb_Climber
+Where CLID  == 1
+;
+--12. Geben Sie alle Kletterer, die mindestens eine Begehung von Routen mit Grad'7a' oder schwerer haben.
+--12. NEU: Alle Kletterer, die eine bestimmte Route begangen sind,
+Select * from Climber_Route
+Where RID == 1;
+
+
+--13. Geben Sie alle Routen eines bestimmten Sektors aus.
+Select * From Route
+Where SID = 2;
+
+--14. Geben Sie alle Sektoren, in denen schwere Routen (z.B. Grad wie '7a', '7b', …) vorkommen.
+--14 NEU: Geben Sie alle Sektoren aus, deren Schwierigkeitsfokus "schwer" ist!
+Select * from Sektor
+Where SectorNiveau = 'schwer';
+
+
+--17. Geben Sie alle Kletterer aus, die an keinem Kurs teilnehmen
+--NEU 17: Alle Kletterer, die an einem bestimmten Kurs teilnehmen!
+--Hab keine Verbindung
+
+--18. Geben Sie alle Kurse, die weniger als 10 Plätze haben.
+Select * from Course
+Where maxPeople < 10;
+
+-- 19 NEU - Geben Sie den Kurstitel aller Kurse aus, die für Anfänger sind!
+Select Title from Course
+Where Niveau == 'Anfänger';
+
+--20. Geben Sie alle Kletterer aus, die eine aktuelle Monats- oder Jahreskarte ha-ben
+Select * from Abo
+Where name == 'Monatskarte' OR name == 'Jahreskarte';

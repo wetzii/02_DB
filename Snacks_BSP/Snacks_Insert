@@ -1,0 +1,17 @@
+INSERT INTO Hersteller (Name, Land) VALUES
+('Milka', 'Österreich'),
+('Hitschies', 'Deutschland'),
+('Nestle', 'Schweiz'),
+('FunnyFrish', 'Deutschland');
+
+INSERT INTO Snack(Bezeichnung, Kategorie, Preis, HID) VALUES
+('Nuss-Schokolade', 'Schokolade', 1.99, 1),
+('Blaue-Drachenzungen', 'gummi', 1.99,2),
+('Paprika-Chips', 'Chips', 1.99,4),
+('Gurkenschokolade', 'Schokolade', 2.5, 1),
+('Schlangen', 'gummi', 4.99,2),
+('Gurken-Chips', 'Chips', 1.99,4),
+('Sour-Creme', 'Chips', 0.99,4),
+('Karamell-schokolade', 'Schokolade', 2.5, 1),
+('Erbsen', 'gummi', 9.99,2),
+('Flesich-Chips', 'Chips', 3.99,4)

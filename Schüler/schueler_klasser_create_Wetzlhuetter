@@ -1,0 +1,17 @@
+-- Tabellen erstellen
+CREATE TABLE Klasse(
+    KID INTEGRT NOT NULL PRIMARY KEY,
+    --ATTRIBUTNAME Datentyp   
+    --Not Null
+    Name VARCHAR(50),
+    Jahrgang INTEGER
+    
+);
+CREATE TABLE Schueler (
+--VARCHAR(maximale Zeichenzahl)
+   SID      INTEGER NOT NULL PRIMARY KEY,
+   Name VARCHAR(100),
+   Lieblingsfach VARCHAR(100),
+   GebJahr YEAR,
+   KID INTEGER REFERENCES Klasse(KID)
+);

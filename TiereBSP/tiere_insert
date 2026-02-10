@@ -1,0 +1,18 @@
+INSERT INTO Lebensraum (Gebiet, Kontinent) VALUES
+('Wüste', 'Afrika'),
+('Regenwald', 'Südamerika'),
+('Savanne', 'Afrika'),
+('Gebirge', 'Asien');
+
+INSERT INTO Tier (Name, Art, GebYear, Gewicht, Futterart, LID) VALUES
+('Simba', 'Löwe', 2012, 200, 'Fleischfresser', 3),
+('Dumbo', 'Elefant', 2015, 5000, 'Pflanzenfresser', 3),
+('Baloo', 'Bär', 2010, 300, 'Allesfresser', 4),
+('Rafiki', 'Affe', 2020, 40, 'Allesfresser', 2),
+('Kaa', 'Schlange', 2018, 25, 'Fleischfresser', 2),
+('Zazu', 'Vogel', 2021, 5, 'Allesfresser', 3),
+('Shere Khan', 'Tiger', 2016, 220, 'Fleischfresser', 2),
+('Manny', 'Mammut', 2005, 6000, 'Pflanzenfresser', 4),
+('Tim', 'Erdmännchen', 2022, 10, 'Allesfresser', 1),
+('Nala', 'Löwe', 2019, 180, 'Fleischfresser', 3);
+

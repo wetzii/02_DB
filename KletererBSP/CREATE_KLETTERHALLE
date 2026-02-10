@@ -1,0 +1,76 @@
+Create Table Halle(
+HID INTEGER Not Null Primary Key Autoincrement,
+Name Varchar(50),
+Type Varchar(100),
+Location Varchar(100)
+);
+
+Create Table Sektor(
+SID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+SectorNiveau Varchar(50),
+name Varhcar(50),
+HID INTEGER REFERENCES Halle(HID)
+);
+
+CREATE TABLE Route(
+RID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+RouteName Varchar(50),
+Stil VarChar(50),
+RouteNiveau Varchar(50),
+SrewDate DATE,
+SID INTEGER REFERENCES Sektor(SID)
+
+);
+CREATE TABLE Climber(
+CLID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+Name Varchar(50),
+EcperienceLevel VarChar(50),
+BYear Year
+);
+
+CREATE TABLE Climb(
+CLIMBID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+Trys Integer,
+Stil Varchar(50),
+ClimbDay Date
+);
+
+Create Table Abo(
+AID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+Price Double,
+name VarChar(50),
+ValidRange Integer
+);
+
+Create Table Course(
+COID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+MaxPeople Integer,
+Title Varchar(50),
+STartDate Date,
+Niveau VarChar(50),
+HID INTEGER REFERENCES Halle(HID)
+);
+
+Create Table Climer_Abo(
+CLAID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+CLID INTEGER REFERENCES Climber(CLID),
+AID INTEGER REFERENCES Abo(AID)
+);
+
+Create Table Climb_Climber(
+ICLID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+CLID INTEGER REFERENCES Climber(CLID),
+CLIMBID INTEGER REFERENCES Climb(CLIMBID)
+);
+
+Create Table Climber_Route(
+CRID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+CLID REFERENCES Climber(CLID),
+RID REFERENCES Route(RID)
+);
+
+CREATE TABLE Climb_Route(
+CLIMBRID INTEGER NOT NULL PRIMARY KEY,
+CLIMBID REFERENCES Climb(CLIMBID),
+RID REFERENCES Route(RID)
+);

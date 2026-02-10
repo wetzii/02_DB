@@ -1,0 +1,9 @@
+Insert INTO Klasse Values(7,'1LIT',1);
+
+--Werten in Schueler Tabelle einfügen
+
+INSERT INTO Schueler(Name,Lieblingsfach,GebJahr,KID) VALUES 
+('Knöpsi', 'Alles ausßer Unterricht',2007,5),
+('Max KEP' ,'BET', 2005,5),
+('Random aus Zug mit Arch', 'NMSD' ,2007, 5);
+

@@ -1,0 +1,15 @@
+INSERT INTO Console (Name, Hersteller, ReleaseYear) VALUES
+('PlayStation 5', 'Sony', 2020),
+('Xbox Series X', 'Microsoft', 2020),
+('Nintendo Switch', 'Nintendo', 2017),
+('PlayStation 4', 'Sony', 2013);
+
+INSERT INTO Game (Name, Preis, Genre, CID) VALUES
+('Spider-Man', 49.99, 'Action', 1),
+('Civilization VI', 29.99, 'Strategie', 2),
+('Stardew Valley', 14.99, 'Simulation', 3),
+('FIFA 23', 59.99, 'Simulation', 4),
+('Age of Empires', 39.99, 'Strategie', 2),
+('Super Mario Odyssey', 44.99, 'Action', 3),
+('SimCity', 19.99, 'Simulation', 4),
+('StarCraft', 9.99, 'Strategie', 2);

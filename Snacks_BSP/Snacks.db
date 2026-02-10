@@ -1,0 +1,11 @@
+CREATE TABLE Hersteller(
+HID INTEGER NOT NULL PRIMARY KEY Autoincrement,
+Name VARCHAR(50),
+Land VARCHAR(50)
+);
+CREATE TABLE Snack(
+SID INTEGER NOT NULL PRIMARY KEY Autoincrement,
+Bezeichnung VARCHAR(50),
+Kategorie VARCHAR(50),
+Preis FLOAT
+);

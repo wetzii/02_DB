@@ -1,0 +1,36 @@
+/*Geben Sie nur Titel und Genre aller Games aus*/
+SELECT Name, Genre FROM Game;
+/*Geben Sie alle Games aus, die entweder Strategie oder Action sind*/
+Select * From Game
+WHERE Genre == "Strategie"
+OR Genre == "Action";
+--Geben Sie alle Games aus, die nicht zum Genre 'Strategie' gehören
+Select * From Game
+WHERE Genre != "Strategie";
+--Geben Sie alle Games aus, deren Preis unter 20 € liegt
+Select * From Game
+WHERE Preis < 20;
+--Geben Sie alle Games aus, deren Preis zwischen 15 € und 40 € liegt
+Select * From Game
+WHERE Preis >= 15
+AND Preis <= 40;
+--Geben Sie alle Games aus, die mehr als 30 € kosten und dem Genre 'Simulation' angehören
+Select * From Game
+WHERE Preis > 30
+AND Genre == "Simulation";
+--Geben Sie alle Games aus, deren Titel mit dem Buchstaben 'S' beginnt
+Select * From Game
+WHERE Name Like 'S%';
+--Geben Sie alle Games aus, aufsteigend nach Titel sortiert
+Select * From Game
+ORDER BY Name ASC;
+--Geben Sie alle Games aus, sortiert nach Preis (zuerst billig, dann teuer
+SELECT * From Game
+ORDER BY Preis ASC;
+--Geben Sie alle Games aus, die günstiger als 10 € sind oder dem Genre 'Action' angehören
+SELECT * From Game
+WHERE Price < 10
+OR Genre == "Action";
+--Geben Sie alle Games aus, deren Preis mindestens 25 € beträgt
+SELECT * FROM Game
+Where Preis > 25;

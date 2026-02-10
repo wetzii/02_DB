@@ -1,0 +1,57 @@
+
+SELECT * FROM Tier;
+
+
+SELECT * FROM Lebensraum
+WHERE Kontinent == 'Afrika';
+
+
+SELECT * FROM Lebensraum
+WHERE Kontinent == 'Asien'
+OR Kontinent == 'Europa';
+
+
+SELECT Name, GebYear FROM Tier;
+
+SELECT * FROM Tier
+WHERE Art == 'Affe';
+
+
+SELECT * FROM Tier
+WHERE Gewicht > 100;
+
+SELECT * FROM Tier
+WHERE LID == 2;
+
+SELECT * FROM Tier
+WHERE GebYear >= 2020;
+
+
+SELECT * FROM Tier
+WHERE Futterart == 'Pflanzenfresser';
+
+
+SELECT * FROM Tier
+WHERE Futterart == 'Fleischfresser';
+
+
+SELECT * FROM Tier
+WHERE Futterart == 'Fleischfresser'
+OR Gewicht > 400;
+
+
+SELECT * FROM Tier
+WHERE Gewicht < 100;
+
+
+SELECT * FROM Tier
+ORDER BY Name ASC;
+
+
+SELECT * FROM Tier
+WHERE GebYear <= 2018;
+
+
+SELECT * FROM Tier
+WHERE LID == 3
+AND Futterart == 'Fleischfresser';
