@@ -1,0 +1,151 @@
+ALTER TABLE Schulen ADD COLUMN sDirNNAME VARCHAR(50);
+
+UPDATE Schulen
+SET sDirNNAME = 'Hofer'
+Where SchuleID == 1;
+
+UPDATE Schulen
+SET sDirNNAME = 'Gruber'
+Where SchuleID == 2;
+
+UPDATE Schulen
+SET sDirNNAME = 'Schneider'
+Where SchuleID == 3;
+
+UPDATE Schulen
+SET sDirNNAME = 'Bauer'
+Where SchuleID == 4;
+
+ALTER TABLE Schulen REname to Schule;
+ALTER TABLE Schule Rename Column Name to sName;
+ALTER TABLE Schule Rename Column Gründung to sGruendung;
+
+----------------------------------------------------------------------
+
+ALTER TABLE Klassen ADD COLUMN kStaerke VARCHAR(50);
+ALTER TABLE Klassen ADD COLUMN SchuleID References Schule(SchuleID);
+ALTER TABLE Klassen ADD COLUMN kStearke INTEGER;
+
+Update Klassen 
+SET kStearke = 26, SchuleID = 1, KVNName = 'KEP'
+WHERE KID == 1;
+
+Update Klassen 
+SET kStearke = 25, SchuleID = 3, KVNNAME = 'GSC'
+WHERE KID == 2;
+
+
+Update Klassen 
+SET kStearke = 27, SchuleID = 1, KVNNAME = 'STSE'
+WHERE KID == 3;
+
+
+Update Klassen 
+SET kStearke = 17, SchuleID = 1, KVNNAME = 'SC'
+WHERE KID == 4;
+
+ALter Table Klassen Rename to Klasse;
+ALTER TABLE Klasse Rename Column Bezeichnung to kBezeichnung;
+--------------------------------------
+Delete from Schüler 
+Where SchuelerID = 5;
+
+Alter Table Schüler
+Drop Column GebDatum;
+
+ALTER TABLE Schüler ADD COLUMN KID References Klasse(KID);
+
+Update Schüler 
+SET KID = 1
+Where SchuelerID == 1;
+
+Update Schüler 
+SET KID = 3
+Where SchuelerID == 2;
+
+Update Schüler 
+SET KID = 3
+Where SchuelerID == 3;
+
+Update Schüler 
+SET KID = 2
+Where SchuelerID == 4;
+
+
+ALter Table Schüler Rename to Schueler;
+ALTER TABLE Schueler Rename Column Vorname to sVorname;
+ALTER TABLE Schueler Rename Column Nachname to sNachname;
+ALTER TABLE Schueler Rename Column KID to kID;
+
+----------------------------------------------
+ALTER TABLE Lehrer RENAME COLUMN Vorname TO IVorname;
+ALTER TABLE Lehrer RENAME COLUMN Nachname TO INachname;
+
+ALTER TABLE Lehrer
+ADD COLUMN schuleID References Schule(SchuleID);
+
+Delete from Lehrer 
+Where IVorname == 'Hans' OR 'Monika';
+
+Update Lehrer 
+Set schuleID = 1
+Where LID == 1;
+
+Update Lehrer 
+Set schuleID = 2
+Where LID == 2;
+
+Update Lehrer 
+Set schuleID = 4
+Where LID == 3;
+
+Update Lehrer 
+Set schuleID = 3
+Where LID == 4;
+
+
+
+--Archiv Tabellen -> Hab Vergessen das davor Zu machen deswegen mache ich aus den jetzt archiv Tabellen
+--Muss Create Jetzt selber zusammen Bauen Zuerst für Create
+
+Create Table Schule_Archiv(
+SchuleID Integer Not Null Primary Key Autoincrement,
+sName VarChar(50),
+sDirNName Varchar(50),
+sGruendung Year
+);
+CREATE TABLE Klasse_Archiv (
+KID INTEGER Not Null PRIMARY KEY AUTOINCREMENT,
+kBezeichnung Varchar(50),
+kStaerke INTEGER,
+schuleID References Schule(SchuleID)
+);
+
+CREATE TABLE Schueler_Archiv (
+SchuelerID INTEGER NOT NULL PRIMARY KEY Autoincrement,
+sVorname Varchar(50),
+sNachname Varchar(50),
+kID INTEGER REFERENCES Klasse(KID)
+);
+
+CREATE TABLE Lehrer_Archiv ( 
+LID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT ,
+IVorname Varchar(50),
+INachname Varchar(50),
+schuleID INTEGER References Schule(SchuleID)
+);
+
+--Jetzt werden Datensätze 'übertragen'
+Insert INTO Klasse_Archiv(kBezeichnung, kStaerke,schuleID)
+Select kBezeichnung, kStearke,schuleID from Klasse;
+
+Insert Into Lehrer_Archiv(IVorname, INachname, schuleID)
+Select IVorname, INachname, schuleID from Lehrer;
+
+Insert Into Schueler_Archiv(SVorname, SNachname, kID)
+Select SVorname, SNachname, kID from Schueler;
+
+Insert Into Schule_Archiv(SName, sDirNName, sGruendung)
+Select SName, sDirNNAME, sGruendung from Schule;
+
+
