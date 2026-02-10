@@ -1,0 +1,95 @@
+INSERT INTO Kino (Name, Town, Company) VALUES
+('CineStar', 'Berlin', 'CineGroup'),
+('MovieWorld', 'Hamburg', 'MW GmbH'),
+('FilmPalast', 'München', 'FP AG'),
+('KinoCity', 'Köln', 'KC Holding'),
+('Lichtspiel', 'Frankfurt', 'LS GmbH'),
+('CinemaOne', 'Stuttgart', 'C1 AG'),
+('MegaMovies', 'Düsseldorf', 'MM Group'),
+('StarCinema', 'Leipzig', 'SC GmbH'),
+('FilmArena', 'Dresden', 'FA AG'),
+('MovieHouse', 'Bremen', 'MH Holding');
+
+INSERT INTO CinemaHall (Places, UPsidRow, KID) VALUES
+(120, TRUE, 1),
+(200, FALSE, 1),
+(150, TRUE, 2),
+(180, FALSE, 3),
+(100, TRUE, 4),
+(220, FALSE, 5),
+(90, TRUE, 6),
+(160, FALSE, 7),
+(140, TRUE, 8),
+(300, FALSE, 9);
+
+INSERT INTO Movie (Title, Genre, Length, SpawnYear) VALUES
+('Inception', 'Sci-Fi', 148, 2010),
+('Titanic', 'Drama', 195, 1997),
+('The Matrix', 'Sci-Fi', 136, 1999),
+('Gladiator', 'Action', 155, 2000),
+('Avatar', 'Fantasy', 162, 2009),
+('Joker', 'Drama', 122, 2019),
+('Interstellar', 'Sci-Fi', 169, 2014),
+('The Godfather', 'Crime', 175, 1972),
+('Pulp Fiction', 'Crime', 154, 1994),
+('The Dark Knight', 'Action', 152, 2008);
+
+INSERT INTO Show (Price, Date, HID, MID) VALUES
+(10.50, '2024-01-10 18:00', 1, 1),
+(12.00, '2024-01-11 20:00', 2, 2),
+(9.50,  '2024-01-12 17:30', 3, 3),
+(11.00, '2024-01-13 19:00', 4, 4),
+(13.00, '2024-01-14 21:00', 5, 5),
+(10.00, '2024-01-15 18:30', 6, 6),
+(14.00, '2024-01-16 20:30', 7, 7),
+(9.00,  '2024-01-17 16:00', 8, 8),
+(11.50, '2024-01-18 19:30', 9, 9),
+(12.50, '2024-01-19 21:15', 10, 10);
+
+INSERT INTO Actor (Name, Age) VALUES
+('Leonardo DiCaprio', 49),
+('Kate Winslet', 48),
+('Keanu Reeves', 59),
+('Russell Crowe', 60),
+('Sam Worthington', 47),
+('Joaquin Phoenix', 50),
+('Matthew McConaughey', 55),
+('Marlon Brando', 80),
+('John Travolta', 70),
+('Christian Bale', 50);
+
+INSERT INTO Language (LanName) VALUES
+('English'),
+('German'),
+('French'),
+('Spanish'),
+('Italian'),
+('Japanese'),
+('Chinese'),
+('Korean'),
+('Hindi'),
+('Portuguese');
+INSERT INTO Movie_Actor (MID, ACID) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6),
+(7, 7),
+(8, 8),
+(9, 9),
+(10, 10);
+
+INSERT INTO Movie_Language (MID, LanID) VALUES
+(1, 1),
+(2, 1),
+(3, 2),
+(4, 3),
+(5, 4),
+(6, 1),
+(7, 5),
+(8, 6),
+(9, 7),
+(10, 8);
+
