@@ -1,0 +1,10 @@
+INSERT INTO Song (sTitel ,aID) VALUES
+('Dancing Queen',2),
+('Billie Jean',1),
+('Mamma Mia', 2),
+('Unwritten',4);
+
+INSERT INTO Artist (Name) VALUES
+('Michael Jackson'),
+('ABBA'),
+('Taylor Swift'),
