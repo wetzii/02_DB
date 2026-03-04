@@ -10,6 +10,41 @@ INSERT INTO Artist (Name) VALUES
 ('Taylor Swift');
 
 
+--Inner JOIN
 Select * From Song 
 Inner Join Artist
 ON Song.aID == Artist.AID;
+
+--LEft JOin
+Select * FROM Song
+LEFT JOIN Artist
+ON Song.aID == Artist.AID;  --Inklusive INNER JOIN
+
+--LEft JOin
+Select * FROM Song
+LEFT JOIN Artist
+ON Song.aID == Artist.AID  --exklusive INNER JOIN
+WHERE Artist.AID is null;
+
+--Right JOIN
+SELECT * FROM Song
+Right Join Artist
+ON Song.aID == Artist.AID; --Inklusive INNER JOIN
+
+--Right JOIN Exklusive Inner
+Select * FROM Song
+Right JOIN Artist
+ON Song.aID == Artist.AID  --exklusive INNER JOIN
+WHERE Song.aID is Null;
+
+--Full Outer Join Inklusivw INNER JOIN
+Select * FROM Song
+Full OUTER JOIN Artist
+ON Song.aID == Artist.AID;
+
+--Full Outer Join Inklusivw INNER JOIN
+Select song.sTitle FROM Song
+Full OUTER JOIN Artist
+ON Song.aID == Artist.AID
+WHERE Song.aID is Null;
+
