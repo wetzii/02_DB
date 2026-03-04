@@ -1,0 +1,10 @@
+Create Table Song(
+SID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+sTitle varchar(20),
+aID Integer References Artist(AID)
+);
+
+Create Table Artist(
+AID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+Name varchar(20)
+)
