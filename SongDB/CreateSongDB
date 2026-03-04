@@ -8,3 +8,4 @@ Create Table Artist(
 AID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 Name varchar(20)
 )
+

@@ -1,0 +1,15 @@
+INSERT INTO Song (sTitle ,aID) VALUES
+('Dancing Queen',2),
+('Billie Jean',1),
+('Mamma Mia', 2),
+('Unwritten',Null);
+
+INSERT INTO Artist (Name) VALUES
+('Michael Jackson'),
+('ABBA'),
+('Taylor Swift');
+
+
+Select * From Song 
+Inner Join Artist
+ON Song.aID == Artist.AID;
