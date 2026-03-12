@@ -1,0 +1,94 @@
+SELECT Buch.bTitle, Autor.ANachname, Autor.aVorname
+
+FROM Buch
+
+INNER JOIN Autor ON Buch.aID = Autor.aID;
+
+
+-------------------------------------
+Select Exemplar.eStandort, Exemplar.eStatus
+
+From Exemplar
+
+INNER JOIN Buch on Buch.bid = Exemplar.bID
+
+Where Buch.bTitle == 'Es';
+
+-------------------------------------
+Select Buch.bTitle
+
+From Buch
+
+Inner Join Exemplar on Buch.bid = Exemplar.bID
+
+Where Exemplar.EID != "verfuegbar"
+
+Order By buch.bTitle desc;
+---------------------------------------
+Select * from Mitglied
+
+Full Outer JOin Ausleihe on Mitglied.MID = Ausleihe.mID;
+
+---------------------------------------
+Select buch.bTitle from buch
+
+Left Join Autor on Autor.AID = Buch.AID
+
+WHERE Buch.aID is null;
+
+------------------------------------------
+--Geben Sie alle Exemplare und Ausleihen mit ihren kompletten Informationen aus
+
+Select * from Exemplar 
+
+Full Join Ausleihe on Ausleihe.eID = exemplar.eid;
+
+
+--7. Geben Sie alle Büchertitel aus, zu denen kein Exemplar existiert
+Select buch.bTitle from Buch
+
+Left Join Exemplar on Exemplar.bID = buch.BID
+Where Exemplar.bID is null;
+
+--8. Geben Sie das Datum der Ausleihen aus, die von Mitgliedern älter als 16 Jahre getä
+--tigt wurden. Geben Sie außerdem Vor , Nachname und Alter des Mitgliedes aus. Die
+--Ausgabe ist absteigend nach Alter sortiert.
+
+Select Ausleihe.aDatum, Mitglied.mVorname, Mitglied.mNachname, Mitglied.mAlter from Ausleihe
+
+Right Join Mitglied on Mitglied.MID is Ausleihe.mID
+Where Mitglied.mAlter > 16
+Order by Mitglied.mAlter desc;
+
+--9. Geben Sie Vor und Nachname der Autoren aus, deren Bücher zwischen 1900 und 2000
+--erschienen sind. Sortieren Sie die Ausgabe aufsteigend nach Erscheinungsdatum
+
+Select AUtor.aVorname, Autor.aNachname from Autor
+
+Left Join Buch on Buch.aID = Autor.AID
+Where buch.bJahr between 1900 and 2000;
+
+--10. Geben Sie für alle Ausleihen das Ausleihdatum und den Exemplarstandort aus
+Select ausleihe.aDatum, exemplar.eStandort From Ausleihe
+
+Left Join Exemplar on exemplar.EID is ausleihe.eID;
+
+--11
+SELECT Exemplar.* 
+FROM Exemplar
+LEFT JOIN Ausleihe ON Exemplar.eID = Ausleihe.eID
+WHERE Ausleihe.eID IS NULL;
+
+--12. Geben Sie alle Buchtitel mit Autoren Vor und Nachnamen aus, bei denen im Buchtitel
+--das Wort „und“ enthalten ist.
+Select Buch.bTitle, Autor.aVorname, Autor.aNachname from Buch
+LEft Join Autor on Autor.AID is Buch.aID
+Where Buch.bTitle like '%und%';
+
+--13. Geben Sie alle Mitglieder und alle Ausleihen aus. Zeigen Sie dabei die ganzen Informa
+--tionen aller Tabellen an.
+Select Mitglied.* , Ausleihe.* from Mitglied
+Full Outer JOIN Ausleihe on ausleihe.mID is Mitglied.MID;
+
+--. Überprüfen Sie, wie viele Mitglieder eine Ausleihe getätigt haben und geben Sie alle
+--Daten aus beiden Tabell
