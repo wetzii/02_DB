@@ -1,0 +1,95 @@
+
+INSERT INTO Standort VALUES
+(1,  'Dominos Judenburg',    'Kaserngasse 4',          'Judenburg'),
+(2,  'Dominos Knittelfeld',  'Hauptplatz 12',          'Knittelfeld'),
+(3,  'Dominos Zeltweg',      'Bundesstraße 8',         'Zeltweg'),
+(4,  'Dominos Murau',        'Schillerstraße 3',       'Murau'),
+(5,  'Dominos Leoben',       'Franz-Josef-Straße 5',   'Leoben'),
+(6,  'Dominos Donawitz',     'Erzherzog-Johann-Str 2', 'Leoben'),
+(7,  'Dominos Bruck/Mur',    'Mittergasse 7',          'Bruck an der Mur'),
+(8,  'Dominos Kapfenberg',   'Grazer Straße 19',       'Kapfenberg'),
+(9,  'Dominos Mürzzuschlag', 'Wiener Straße 11',       'Mürzzuschlag'),
+(10, 'Dominos Kindberg',     'Hauptstraße 6',          'Kindberg');
+
+INSERT INTO Pizza VALUES
+(1,  'Margherita',       1),
+(2,  'Quattro Formaggi', 1),
+(3,  'Diavola',          0),
+(4,  'Prosciutto',       0),
+(5,  'Salami',           0),
+(6,  'Funghi',           1),
+(7,  'Capricciosa',      0),
+(8,  'Hawaii',           0),
+(9,  'Tonno',            0),
+(10, 'Spinaci',          1),
+(11, 'BBQ Chicken',      0),
+(12, 'Veggie Queen',     1);
+
+INSERT INTO Mitarbeiter VALUES
+(1,  'Thomas',    'Müller',      1985, 1, 1),
+(2,  'Anna',      'Maier',       1992, 0, 1),
+(3,  'Stefan',    'Huber',       1988, 0, 1),
+(4,  'Maria',     'Gruber',      1979, 1, 2),
+(5,  'Klaus',     'Mayer',       1995, 0, 2),
+(6,  'Lisa',      'Moser',       1990, 0, 2),
+(7,  'David',     'Wagner',      1983, 1, 3),
+(8,  'Sandra',    'Pichler',     1997, 0, 3),
+(9,  'Michael',   'Bauer',       1986, 1, 4),
+(10, 'Julia',     'Schmid',      1993, 0, 4),
+(11, 'Georg',     'Leitner',     1975, 1, 5),
+(12, 'Eva',       'Berger',      1999, 0, 5),
+(13, 'Patrick',   'Koller',      1989, 0, 5),
+(14, 'Sabine',    'Mühlbauer',   1982, 1, 6),
+(15, 'Florian',   'Steiner',     1996, 0, 6),
+(16, 'Katharina', 'Mitteregger', 1991, 1, 7),
+(17, 'Markus',    'Hofer',       1987, 0, 8),
+(18, 'Nicole',    'Rainer',      1994, 1, 9),
+(19, 'Simon',     'Ortner',      1980, 0, 10),
+(20, 'Laura',     'Mandl',       1998, 1, 10);
+
+INSERT INTO Speissekarte VALUES
+(1,  8.90,  1, 1,  1),
+(2,  11.50, 1, 1,  2),
+(3,  12.90, 1, 1,  3),
+(4,  10.50, 0, 1,  4),
+(5,  9.90,  1, 2,  1),
+(6,  13.50, 1, 2,  5),
+(7,  11.90, 1, 2,  7),
+(8,  10.90, 0, 2,  8),
+(9,  9.50,  1, 3,  1),
+(10, 12.00, 1, 3,  6),
+(11, 14.90, 1, 4,  11),
+(12, 10.00, 1, 4,  12),
+(13, 11.00, 0, 5,  9),
+(14, 12.50, 1, 5,  3),
+(15, 13.00, 1, 5,  7),
+(16, 9.90,  1, 6,  1),
+(17, 11.50, 1, 6,  5),
+(18, 10.50, 0, 7,  4),
+(19, 12.90, 1, 8,  3),
+(20, 9.50,  1, 9,  2),
+(21, 11.90, 1, 10, 6),
+(22, 13.90, 0, 10, 11);
+
+-- Tabelle: Rechnung (RID, rDatum, rGesamt, rZahlungsmittel, mID)
+INSERT INTO Rechnung (RID, rDatum, rGesamt, rZahlungsmittel, mID) VALUES
+(NULL, '2025-01-05', 18.80, 'Bar',    1),  -- Thomas Müller
+(NULL, '2025-01-12', 24.40, 'Karte',  2),  -- Anna Maier
+(NULL, '2025-02-03', 11.50, 'Bar',    3),  -- Stefan Huber
+(NULL, '2025-02-14', 32.90, 'Karte',  4),  -- Maria Gruber
+(NULL, '2025-03-01', 9.90,  'Bar',    5),  -- Klaus Mayer
+(NULL, '2025-03-22', 21.80, 'Online', 6),  -- Lisa Moser
+(NULL, '2025-04-08', 15.90, 'Bar',    7),  -- David Wagner
+(NULL, '2025-04-19', 28.50, 'Karte',  8),  -- Sandra Pichler
+(NULL, '2025-05-02', 19.90, 'Bar',    9),  -- Michael Bauer
+(NULL, '2025-05-17', 43.00, 'Karte',  10), -- Julia Schmid
+(NULL, '2025-06-06', 12.90, 'Online', 11), -- Georg Leitner
+(NULL, '2025-06-21', 25.80, 'Bar',    12), -- Eva Berger
+(NULL, '2025-07-03', 17.50, 'Karte',  13), -- Patrick Koller
+(NULL, '2025-07-15', 38.90, 'Karte',  14), -- Sabine Mühlbauer
+(NULL, '2025-08-08', 22.40, 'Bar',    15), -- Florian Steiner
+(NULL, '2025-09-01', 14.90, 'Online', 16), -- Katharina Mitteregger
+(NULL, '2025-09-25', 31.50, 'Karte',  17), -- Markus Hofer
+(NULL, '2025-10-10', 9.50,  'Bar',    18), -- Nicole Rainer
+(NULL, '2025-11-03', 27.80, 'Karte',  19), -- Simon Ortner
+(NULL, '2025-12-24', 52.60, 'Online', 20); -- Laura Mandl

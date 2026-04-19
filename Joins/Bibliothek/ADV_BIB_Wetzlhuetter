@@ -1,0 +1,147 @@
+ALter TABLE Buch ADD COLUMN Sternenchen Integer;
+
+ALTER TABLE Buch RENAME Column Sternenchen TO  Bewertung;
+ 
+Update Buch 
+SET Bewertung == 5
+WHERE BID = 3;
+
+Update Buch 
+SET Bewertung == 5
+WHERE BID = 2;
+
+Update Buch 
+SET Bewertung == 5
+WHERE BID = 1;
+
+Update Buch 
+SET Bewertung == 5
+WHERE BID = 8;
+
+Delete From Mitglied Where BID == 9;
+
+Update Mitglied 
+Set mAlter == 19
+Where mALter == 17;
+
+Alter TABLE Buch Drop Column Bewertung;
+
+--JOINS + Aggregatfunktionen
+
+--1. Geben Sie Standort, Buchtitel, FSK und den Nachnamen des Autors von allen derzeitig
+--ausgeliehenden Büchern aus, deren Autor ein ‚e‘ im Nachnamen hat.
+
+Select Exemplar.eStandort,Buch.bFsk,  autor.aNachname, Autor.aCountry From Buch
+INNER JOIN Exemplar on Exemplar.bID == Buch.BID
+INNER JOIN Autor on Autor.AID == Buch.BID;
+
+--2. Geben Sie die das Genre und die Anzahl der Autoren aller Bücher mit dem gleichen
+--Genre aus, absteigend sortiert nach Nachname des Au
+SELECT Buch.bGenre, count(Autor.AID) AS CountAutor From Buch
+INNER JOIN Autor on Autor.AID == Buch.aID
+Group by Buch.bGenre;
+--3
+Select Buch.bTitle, Buch.bJahr, Autor.aNachname, Autor.aVorname, min(Buch.bJahr) FROM Buch
+INNER JOIN Autor on Buch.aID == Autor.AID;
+
+--4 
+SELECT Mitglied.mVorname, Mitglied.mNachname From Mitglied
+INNER JOIN Ausleihe on Ausleihe.mID == Mitglied.MID
+WHERE Ausleihe.aRueckgabe is NULL
+ORDER by Mitglied.mNachname asc;
+
+--5
+SELECT Autor.aCountry, count(Autor.AID) as AutorCount FROM Autor
+LEFT JOIN BUCH on Autor.AID == Buch.aID
+GROUP by Autor.aCountry;
+
+--6
+SELECT BubGenre, Avg(Buch.bFsk), AUtor.aVorname as AvgFSK From Buch
+INNER JOIN Autor on Autor.AID == Buch.aID
+Group by buch.bGenre 
+HAVING Autor.aVorname LIKE '%a%';
+
+--7
+SELECT Autor.aNachname, Autor.aCountry, count(Buch.aID) FROM Autor
+INNER JOIN BUCH ON Autor.AID = Buch.BID
+Group by Autor.aCountry
+Order by count(Buch.aID) desc;
+
+--8
+ Select Autor.aNachname, Autor.aVorname, min(Buch.bFsk) FROM AUTOR
+INNER JOIN BUCH ON Autor.AID = Buch.BID
+Group by Autor.AID
+ORDER BY Buch.bTitle asc;
+
+--9
+Select avg(Buch.bJahr) FROM BUCH
+HAVING Autor.aCountry == "UK" AND Buch.bGenre == "Roman";
+
+--10
+SELECT Exemplar.eStatus, Buch.bTitle, Buch.bGenre FROM Autor
+LEFT JOIN Buch on Buch.aID = Autor.AID
+LEFT JOIN Buch on Buch.BID = Exemplar.bID
+WHERE Buch.aID = null;
+
+--11
+--11. Geben Sie alle Mitglieder mit Vor- und Nachname aus, die mehr als eine Ausleihe
+--getätigt haben. Es soll auch die Anzahl der Ausleihen angezeigt wer
+Select Mitglied.mVorname, Mitglied.mNachname, count(Ausleihe.AID) as AnzahlAusleihe FROM Mitglied
+INNER JOIN Ausleihe on Ausleihe.mID = Mitglied.MID
+Group by Mitglied.MID
+HAVING AnzahlAusleihe > 1;
+
+--12
+--12. Geben Sie alle Bücher mit Buchtitel, Genre und Autorennamen aus, zu denen kein
+--Exemplar existiert.
+SELECT Buch.bTitle, Buch.bGenre, Autor.aNachname FROM BUCH 
+INNER JOIN Buch on Buch.BID = Autor.AID
+LEFT JOIN Buch on Buch.BID = Exemplar.bID
+WHERE Exemplar.EID is NULL;
+
+--13. Geben Sie für jedes Genre die Anzahl aller Bücher ohne Autor aus. Es sollen Genre und
+--Anzahl ausgegeben werden.
+SELECT Buch.bGenre, Count(*) FROM BUCH 
+LEFT Join Autor ON Buch.aID = Autor.AID
+WHERE Autor.AID is NULL
+Group by Buch.bGenre;
+
+--14. Geben Sie für jedes Genre den kleinsten FSK-Wert aus, aber nur für jene Genres, in
+--denen mehr als ein Buch vorhanden ist
+SElect Buch.bGenre, min(Buch.bFsk) as minFSK FROM Buch
+GROUP by Buch.bGenre
+HAving count(*) > 1;
+
+--15. Geben Sie für jedes Genre das neueste Erscheinungsjahr aus, aber nur für jene Genres,
+--deren durchschnittlicher FSK größer als 10 ist.
+SELECT Buch.bGenre, max(Buch.bJahr) FROM BUCH
+GROUP by Buch.bGenre
+HAVING avg(Buch.bFsk) > 10;
+
+--16. Geben Sie für jedes Alter der Mitglieder die Anzahl der Ausleihen aus, die von Mitglie-
+--dern dieses Alters getätigt wurden. Es sollen nur Altersgruppen mit mehr als einer
+--Ausleihe angezeigt werden.
+SELECT Mitglied.mAlter, count(*) as avgAusleihen FROM Mitglied
+INNER JOIN ausleihe on Ausleihe.mID = Mitglied.MID
+GROUP BY Mitglied.mAlter
+HAVING count(*) > 1;
+--
+--17. Geben Sie für jedes Mitgliedsalter den alphabetisch letzten Nachnamen eines Mitglieds
+--dieses Alters aus.
+SELECT Mitglied.mAlter, max(Mitglied.mNachname) as LastLastname FROM Mitglied
+GROUP BY Mitglied.mAlter;
+
+--18. Geben Sie für jedes Country die Summe der FSK-Werte aller Bücher aus, die von Autoren
+--dieses Landes verfasst wurden, sortiert absteigend nach der Summe
+SELECT Autor.aCountry, sum(Buch.bFsk) as SumFSK FROM AUtor
+INNER JOIN Buch on Buch.aID = Autor.AID
+GROUP by Autor.aCountry
+ORDER BY  sumFSK desc;
+
+--19. Geben Sie für jeden Autor den Vor- und Nachnamen sowie die Anzahl der offenen
+--Ausleihen seiner Bücher aus.
+SELECT Autor.aNachname, AUtor.aVorname, count(Ausleihe.AID) FROM Autor
+INNER JOIN Ausleihe on Autor.AID = Ausleihe.AID
+LEFT JOIN Buch on Autor.AID = Buch.BID
+WHERE Ausleihe.aRueckgabe is NULL
+GROUP by Autor.AID;

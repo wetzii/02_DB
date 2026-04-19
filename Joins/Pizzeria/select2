@@ -1,0 +1,140 @@
+--1. Geben Sie die Anzahl aller Mitarbeiter je Standort aus.Die Ausgabe soll Standortname
+--und Anzahl der Mitarbeiter enthalten
+Select Standort.sName, count(Mitarbeiter.sID) From Mitarbeiter
+LEFT JOIN Standort on Standort.SID = Mitarbeiter.sID
+Group by Standort.sName;
+
+--2. Geben Sie die Anzahl aller Mitarbeiter je Standort aus, wobei nur Standorte mit mehr
+--als 2 Mitarbeitern angezeigt werden sollen.
+Select Standort.sName, count(Mitarbeiter.sID) From Mitarbeiter
+LEFT JOIN Standort on Standort.SID = Mitarbeiter.sID
+Group by Standort.sName
+Having count(Mitarbeiter.sID) > 2;
+
+--3. Geben Sie das durchschnittliche Geburtsjahr der Mitarbeiter je Standort aus. Die
+--Ausgabe soll nach dem durchschnittlichen Geburtsjahr aufsteigend sortiert werden
+Select Standort.sName, avg(Mitarbeiter.mGEburtstag) From Mitarbeiter
+LEFT JOIN Standort on Standort.SID = Mitarbeiter.sID
+Group by Standort.sName
+Order by avg(Mitarbeiter.mGEburtstag) asc;
+
+--4. Geben Sie das kleinste Geburtsjahr der Mitarbeiter je Standort aus. Die Ausgabe soll
+--Standortname und ältestes Geburtsjahr enthalten
+Select Standort.sName, min(Mitarbeiter.mGEburtstag) From Mitarbeiter
+LEFT JOIN Standort on Standort.SID = Mitarbeiter.sID
+Group by Standort.sName;
+
+--5 gleich wie bei 4 mit max 
+Select Standort.sName, max(Mitarbeiter.mGEburtstag) From Mitarbeiter
+LEFT JOIN Standort on Standort.SID = Mitarbeiter.sID
+Group by Standort.sName;
+
+--6. Geben Sie die Anzahl aller Leiter je Standort aus. Es sollen nur jene Mitarbeiter gezählt
+--werden, die Leiter sind.
+
+Select Standort.sName, count(*) From Mitarbeiter
+LEFT JOIN Standort on Standort.SID = Mitarbeiter.sID
+Group by Standort.sName
+Having Mitarbeiter.mlsLeiter = 1;
+
+--7. Geben Sie die Anzahl aller Rechnungen je Mitarbeiter aus. Die Ausgabe soll Vorname,
+--Nachname und Anzahl der bearbeiteten Rechnungen enthalten. Sortieren Sie die
+--Ausgabe absteigend nach Anzahl der Rechnungen.
+Select Mitarbeiter.mVorname, Mitarbeiter.mNachname, count(Rechnung.RID) FROM Rechnung
+Left Join Mitarbeiter on Rechnung.mID = Mitarbeiter.MID
+Group by Mitarbeiter.MID
+Order by count(Rechnung.RID);
+
+--8. Geben Sie die Summe aller Rechnungsbeträge je Mitarbeiter aus Die Ausgabe soll
+--Vorname, Nachname und die gesamte bearbeitete Summe enthalten.
+
+Select Mitarbeiter.mVorname, Mitarbeiter.mNachname, sum(Rechnung.rGesamt) FROM Rechnung
+Left Join Mitarbeiter on Rechnung.mID = Mitarbeiter.MID
+Group by Mitarbeiter.MID;
+
+--9. Geben Sie den durchschnittlichen Rechnungsbetrag je Mitarbeiter aus. Es sollen nur
+--jene Mitarbeiter angezeigt werden, deren durchschnittlicher Rechnungsbetrag größer
+--als 20 ist.
+Select Mitarbeiter.mVorname, Mitarbeiter.mNachname, avg(Rechnung.rGesamt) FROM Rechnung
+Left Join Mitarbeiter on Rechnung.mID = Mitarbeiter.MID
+Group by Mitarbeiter.MID
+Having avg(Rechnung.rGesamt) > 20;
+
+--10. Geben Sie die Anzahl aller Rechnungen je Zahlungsmittel aus. Sortieren Sie die Ausga-
+--be aufsteigend nach Zahlungsmittel.
+Select Rechnung.rZahlungsmittel, count(*) From Rechnung
+Group by Rechnung.rZahlungsmittel;
+
+--11. Geben Sie die Summe aller Rechnungsbeträge je Zahlungsmittel aus. Sortieren Sie die
+--Ausgabe absteigend nach Gesamtsumme.
+Select Rechnung.rZahlungsmittel, sum(Rechnung.rGesamt) From Rechnung
+Group by Rechnung.rZahlungsmittel
+Order by Rechnung.rGesamt desc;
+
+--12. Geben Sie den höchsten Rechnungsbetrag je Zahlungsmittel aus.
+Select Rechnung.rZahlungsmittel, max(Rechnung.rGesamt) From Rechnung
+Group by Rechnung.rZahlungsmittel;
+
+--13. Geben Sie die Anzahl aller angebotenen Pizzen je Standort aus. Die Ausgabe soll
+--Standortname und Anzahl der Pizzen enthalten.
+Select Standort.sName, count(Pizza.PID) From Standort
+INNER JOIN Speissekarte on Standort.SID = Speissekarte.sID
+INNER JOIN Pizza on Pizza.PID = Speissekarte.pID
+Group by Standort.sName;
+
+--14. Geben Sie die Anzahl aller verfügbaren Pizzen je Standort aus. Es sollen nur verfügbare
+--Pizzen gezählt werden.
+Select Standort.sName, count(Pizza.PID) From Standort
+INNER JOIN Speissekarte on Standort.SID = Speissekarte.sID
+INNER JOIN Pizza on Pizza.PID = Speissekarte.pID
+Group by Standort.sName
+Having Speissekarte.sKVerfügbar = 1;
+
+--15. Geben Sie den durchschnittlichen Preis aller Pizzen je Standort aus. Sortieren Sie die
+--Ausgabe absteigend nach Durchschnittspreis.
+Select Standort.sName, avg(Speissekarte.skPREIS) From Standort
+INNER JOIN Speissekarte on Standort.SID = Speissekarte.sID
+INNER JOIN Pizza on Pizza.PID = Speissekarte.pID
+Group by Standort.sName
+Order by avg(Speissekarte.skPREIS) desc;
+
+--16. Geben Sie den günstigsten Preis je Pizza aus. Die Ausgabe soll Pizzaname und güns-
+--tigsten angebotenen Preis enthalten
+Select Pizza.pName, min(Speissekarte.skPREIS) From Standort
+INNER JOIN Speissekarte on Standort.SID = Speissekarte.sID
+INNER JOIN Pizza on Pizza.PID = Speissekarte.pID
+Group by Pizza.PID;
+
+--17. Geben Sie den teuersten Preis je Pizza aus. Die Ausgabe soll Pizzaname und teuersten
+--angebotenen Preis enthalten. Sortieren Sie die Ausgabe absteigend nach Preis
+
+Select Pizza.pName, max(Speissekarte.skPREIS) From Standort
+INNER JOIN Speissekarte on Standort.SID = Speissekarte.sID
+INNER JOIN Pizza on Pizza.PID = Speissekarte.pID
+Group by Pizza.PID;
+
+--18. Geben Sie die Anzahl aller vegetarischen Pizzen je Standort aus. Es sollen nur vegeta-
+--rische Pizzen gezählt werden.
+
+Select Pizza.pName, count(Speissekarte.pID) From Standort
+INNER JOIN Speissekarte on Standort.SID = Speissekarte.sID
+INNER JOIN Pizza on Pizza.PID = Speissekarte.pID
+Group by Pizza.PID
+Having Pizza.plsVeggie = 1;
+
+--19. Geben Sie alle Standorte mit Standortname und durchschnittlichem Pizzapreis aus,
+--deren durchschnittlicher Pizzapreis größer als 10 ist
+
+Select Standort.sName, avg(Speissekarte.skPREIS) From Standort
+INNER JOIN Speissekarte on Standort.SID = Speissekarte.sID
+INNER JOIN Pizza on Pizza.PID = Speissekarte.pID
+Group by Standort.SID 
+HAVING avg(Speissekarte.skPREIS) > 10;
+
+--20. Geben Sie alle Mitarbeiter mit Vorname, Nachname und Anzahl der bearbeiteten Rech-
+--nungen aus, wobei auch Mitarbeiter ohne Rechnung angezeigt werden sollen. Sortieren
+--Sie die Ausgabe aufsteigend nach Nachname.
+Select Mitarbeiter.mVorname, Mitarbeiter.mNachname, count(Rechnung.RID) From Mitarbeiter
+Left JOIN Rechnung on Mitarbeiter.MID = Rechnung.mID
+Group by Mitarbeiter.mNachname 
+Order by Mitarbeiter.mNachname desc;

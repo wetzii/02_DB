@@ -1,0 +1,128 @@
+
+SELECT Mitarbeiter.mVorname, Mitarbeiter.mNachname, Standort.sName FROM Mitarbeiter
+ INNER JOIN Standort ON Standort.SID = Mitarbeiter.sID;
+-- 2Geben Sie alle Mitarbeiter mit Vorname, Nachname und Stadt des Standortes aus,
+-- deren Standort sich in Graz befindet.
+SELECT Mitarbeiter.mVorname, Mitarbeiter.mNachname, Standort.sStadt FROM Mitarbeiter
+INNER JOIN Standort ON Standort.SID = Mitarbeiter.sID
+ WHERE Standort.sStadt == 'Judenburg';
+
+-- Geben Sie alle Mitarbeiter mit Vorname, Nachname, Standortname und Stadt aus,
+-- deren Nachname mit „M“ beginnt.
+SELECT Mitarbeiter.mVorname,  Mitarbeiter.mNachname, Standort.sName,Standort.sStadt
+FROM Mitarbeiter INNER JOIN Standort ON Standort.SID = Mitarbeiter.sID
+WHERE Mitarbeiter.mNachname LIKE 'M%';-- Geben Sie alle Mitarbeiter mit Vorname, Nachname und Standortname aus, die zwi-
+
+-- schen 1985 und 2000 geboren wurden. Sortieren Sie die Ausgabe aufsteigend nach-- Nachname.
+SELECT Mitarbeiter.mVorname, Mitarbeiter.mNachname, Standort.sName, Standort.sStadt FROM Mitarbeiter
+INNER JOIN Standort ON Standort.SID = Mitarbeiter.sID
+WHERE Mitarbeiter.mGEburtstag BETWEEN 1985 AND 2000
+ORDER BY Mitarbeiter.mNachname DESC;
+ 
+-- Geben Sie alle Mitarbeiter mit Vorname, Nachname und Standortname aus, die keine
+-- Leiter sind.
+SELECT Mitarbeiter.mVorname,Mitarbeiter.mNachname, Standort.sStadt
+FROM Mitarbeiter INNER JOIN Standort ON Standort.SID = Mitarbeiter.sID
+ WHERE Mitarbeiter.mlsLeiter != 1;
+ 
+-- Geben Sie alle Mitarbeiter mit Vorname, Nachname und Standortname aus, die Leiter
+-- sind oder vor 1990 geboren wurden.
+SELECT Mitarbeiter.mVorname, Mitarbeiter.mNachname, Standort.sStadt
+FROM Mitarbeiter INNER JOIN Standort ON Standort.SID = Mitarbeiter.sID
+WHERE Mitarbeiter.mlsLeiter != 1 OR  Mitarbeiter.mGEburtstag < 1990;
+-- Geben Sie alle Rechnungen mit Rechnungsdatum, Gesamtbetrag, Zahlungsmittel
+-- sowie Vor- und Nachname des bearbeitenden Mitarbeiters aus.
+SELECT Rechnung.rDatum, Rechnung.rGesamt,Rechnung.rZahlungsmittel, Mitarbeiter.mVorname, Mitarbeiter.mNachname
+FROM Rechnung INNER JOIN  Mitarbeiter ON Mitarbeiter.MID = Rechnung.mID;
+
+-- Geben Sie alle Rechnungen mit Rechnungsdatum, Gesamtbetrag, Zahlungsmittel
+-- sowie Vor- und Nachname des bearbeitenden Mitarbeiters aus, deren Gesamtbetrag-- größer als 20 ist.
+SELECT Rechnung.rDatum, Rechnung.rGesamt, Rechnung.rZahlungsmittel, Mitarbeiter.mVorname, Mitarbeiter.mNachname
+FROM Rechnung INNER JOIN Mitarbeiter ON Mitarbeiter.MID = Rechnung.mID
+WHERE Rechnung.rGesamt > 20;
+-- 9. Geben Sie alle Rechnungen mit Rechnungsdatum, Gesamtbetrag, Zahlungsmittel
+-- sowie Vor- und Nachname des bearbeitenden Mitarbeiters aus, deren Zahlungsmittel-- „Bar“ oder „Karte“ ist
+SELECT Rechnung.rDatum, Rechnung.rGesamt, Rechnung.rZahlungsmittel, Mitarbeiter.mVorname, Mitarbeiter.mNachname
+FROM Rechnung INNER JOIN Mitarbeiter ON Mitarbeiter.MID = Rechnung.mID;
+       
+-- 10. Geben Sie alle Rechnungen mit Rechnungsdatum, Gesamtbetrag sowie Vor- und
+-- Nachname des bearbeitenden Mitarbeiters aus, deren Rechnungsdatum zwischen-- ‚2025-01-01‘ und ‚2025-12-31‘ liegt. Sortieren Sie die Ausgabe absteigend nach Ge--- samtbetrag.
+SELECT Rechnung.rDatum, Rechnung.rGesamt, Rechnung.rZahlungsmittel, Mitarbeiter.mVorname, Mitarbeiter.mNachname
+FROM Rechnung INNER JOIN Mitarbeiter ON Mitarbeiter.MID = Rechnung.mID
+WHERE Rechnung.rDatum BETWEEN '2025-01-01' AND '2025-12-31'
+ORDER BY Rechnung.rGesamt DESC;
+ 
+-- 11. Geben Sie alle Pizzen mit Pizzaname, Preis und Standortname aus, die vegetarisch sind.
+
+SELECT Pizza.pName, Standort.sName FROM Pizza
+INNER JOIN Speissekarte ON Speissekarte.pID = Pizza.PID
+INNER JOIN Standort ON Standort.SID = Speissekarte.sID
+ WHERE Pizza.plsVeggie = 1;
+ 
+-- 12. Geben Sie alle Pizzen mit Pizzaname, Preis und Standortname aus, deren Pizzaname
+-- den Buchstaben „a“ enthält. Sortieren Sie die Ausgabe aufsteigend nach Pizzaname
+SELECT Pizza.pName, Standort.sName FROM Pizza
+INNER JOIN Speissekarte ON Speissekarte.pID = Pizza.PID
+INNER JOIN Standort ON Standort.SID = Speissekarte.sID
+ WHERE Pizza.pName LIKE '%a%'
+ ORDER BY Pizza.plsVeggie;
+ 
+-- 13. Geben Sie alle Pizzen mit Pizzaname, Preis, Verfügbarkeit und Standortname aus, die
+-- nicht verfügbar sind.
+SELECT Pizza.pName, Standort.sName, Speissekarte.sKVerfügbar, Standort.sName
+FROM Pizza 
+INNER JOIN Speissekarte ON Speissekarte.pID = Pizza.PID
+INNER JOIN Standort ON Standort.SID = Speissekarte.sID
+WHERE Speissekarte.sKVerfügbar = 0;
+ 
+-- 14. Geben Sie alle Standorte mit Standortname, Adresse und Stadt sowie den dazugehö-
+-- rigen Mitarbeitern aus.
+SELECT Standort.sName, Standort.sAdresse, Standort.sStadt, Mitarbeiter.mVorname, Mitarbeiter.mNachname
+FROM Standort INNER JOIN Mitarbeiter ON Mitarbeiter.sID = Standort.SID;
+       
+-- 15. Geben Sie alle Standorte mit Standortname, Adresse und Stadt sowie den dazugehö-
+-- rigen Mitarbeitern aus. Auch Standorte ohne Mitarbeiter sollen angezeigt werden
+SELECT Standort.sName, Standort.sAdresse, Standort.sStadt, Mitarbeiter.mVorname, Mitarbeiter.mNachname
+FROM Standort FULL JOIN Mitarbeiter ON Mitarbeiter.sID = Standort.SID;
+       
+-- Geben Sie alle Standorte mit Standortname, Adresse und Stadt aus, zu denen kein
+-- Mitarbeiter existiert.
+SELECT Standort.sName, Standort.sAdresse, Standort.sStadt, Mitarbeiter.mVorname,  Mitarbeiter.mNachname FROM Standort 
+LEFT JOIN Mitarbeiter ON Mitarbeiter.sID = Standort.SID WHERE Mitarbeiter.sID IS NULL;
+
+-- 17. Geben Sie alle Mitarbeiter mit Vorname, Nachname und Standortname aus. Auch
+-- Mitarbeiter ohne zugeordneten Standort sollen angezeigt werden
+SELECT Mitarbeiter.*,Standort.sName
+FROM Mitarbeiter
+LEFT JOIN Standort ON Mitarbeiter.sID = Standort.SID;-- 18. Geben Sie alle Mitarbeiter mit Vorname, Nachname und Standortname aus, die keinem
+-- Standort zugeordnet sind.
+SELECT Mitarbeiter.*, Standort.sName FROM Mitarbeiter
+LEFT JOIN  Standort ON Mitarbeiter.sID = Standort.SID
+WHERE Mitarbeiter.sID IS NULL;
+ 
+-- 19. Geben Sie alle Standorte mit Standortname sowie den angebotenen Pizzen aus. Auch
+-- Standorte ohne Eintrag in der Speisekarte sollen angezeigt werden.
+SELECT Standort.sName, Pizza.pName FROM Standort
+LEFT JOIN Speissekarte ON Standort.SID = Speissekarte.sID
+LEFT JOIN Pizza ON Speissekarte.pID = Pizza.PID;
+       
+-- 20. Geben Sie alle Standorte mit Standortname aus, zu denen kein Eintrag in der Speise-
+-- karte existiert
+SELECT Standort.sName, Pizza.pName FROM Standort
+LEFT JOIN Speissekarte ON Standort.SID = Speissekarte.sID
+LEFT JOIN Pizza ON Speissekarte.pID = Pizza.PID
+WHERE Speissekarte.SID = 0;
+ 
+-- 21. Geben Sie alle Pizzen mit Pizzaname sowie den dazugehörigen Standorten aus. Auch
+-- Pizzen, die an keinem Standort angeboten werden, sollen angezeigt werden
+SELECT Standort.sName, Pizza.pName FROM Standort 
+RIGHT JOIN Speissekarte ON Standort.SID = Speissekarte.sID
+RIGHT JOIN Pizza ON Speissekarte.pID = Pizza.PID;
+-- 22. Geben Sie alle Pizzen mit Pizzaname aus, die an keinem Standort angeboten werden.
+SELECT Pizza.pName FROM Pizza    	
+LEFT JOIN Speissekarte ON Pizza.PID = Speissekarte.pID;
+
+-- 23 
+SELECT Standort.sName, Pizza.pName FROM Standort
+       FULL OUTER JOIN Speissekarte ON Standort.SID = Speissekarte.sID 
+       FULL OUTER JOIN Pizza ON Standort.SID = Pizza.PID;

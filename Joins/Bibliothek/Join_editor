@@ -90,5 +90,60 @@ Where Buch.bTitle like '%und%';
 Select Mitglied.* , Ausleihe.* from Mitglied
 Full Outer JOIN Ausleihe on ausleihe.mID is Mitglied.MID;
 
---. Überprüfen Sie, wie viele Mitglieder eine Ausleihe getätigt haben und geben Sie alle
+--14. Überprüfen Sie, wie viele Mitglieder eine Ausleihe getätigt haben und geben Sie alle
 --Daten aus beiden Tabell
+SELECT Mitglied.*, Ausleihe.*
+FROM Mitglied
+INNER JOIN Ausleihe ON Mitglied.MID = Ausleihe.mID;
+
+--15 Geben Sie alle Daten aufsteigend sortiert nach Nachname jener Mitglieder aus, die
+--KEINE Ausleihe getätigt haben.
+SELECT m.MID, m.mVorname, m.mNachname, m.mAlter
+FROM Mitglied 
+LEFT JOIN Ausleihe ON Mitglied.MID = Ausleihe.mID
+WHERE Ausleihe.AID IS NULL
+ORDER BY Mitglied.mNachname ASC;
+--16 Geben Sie alle Autoren und deren Informationen aus, die Bücher in unserer Bibliothek
+--haben. Zeigen Sie außerdem den Buchtitel und dessen Erscheinungsjahr.
+SELECT Autor.AID, Autor.aVorname, Autor.aNachname, Autor.aCountry, Buch.bTitle, Buch.bJahr
+FROM Autor
+INNER JOIN Buch ON Autor.AID = Buch.aID;
+
+--17. Geben Sie alle verfügbaren Exemplare mit Buchtitel und Standort, absteigend sortiert
+--nach Standort aus.
+SELECT buch.bTitle, Exemplar.eStandort, Exemplar.eStatus
+FROM Exemplar 
+INNER JOIN Buch ON buch.bID = buch.BID
+WHERE Exemplar.eStatus = 'verfuegbar'
+ORDER BY Exemplar.eStandort DESC;
+
+--18. Geben Sie alle Ausleihen mit Vor und Nachname des Mitglieds und dem Standort des
+--Exemplars aus. Sortieren Sie nach Ausleihdatum aufsteigend.
+Select Ausleihe.*, Mitglied.mNachname, Mitglied.mVorname, Exemplar.eStandort 
+From ausleihe
+INNER JOIN Mitglied ON Mitglied.MID = Ausleihe.mID
+INNER JOIN Exemplar ON Exemplar.EID = Ausleihe.eID;
+
+--19 Geben Sie alle Exemplare mit Buchtitel, Genre und Autor aus, deren Status NICHT
+--„verfügbar“ ist und sortieren Sie diese aufsteigend nach Buchtitel.
+SELECT Buch.bTitle, buch.bGenre, autor.aVorname, autor.aNachname, exemplar.eStandort, exemplar.eStatus
+FROM Exemplar 
+INNER JOIN Buch ON Exemplar.bID = Buch.BID
+INNER JOIN Autor ON Buch.aID = autor.AID
+WHERE Exemplar.eStatus != 'verfuegbar'
+ORDER BY Buch.bTitle ASC;
+
+--20 Geben Sie Buchtitel, Autorennachnamen und Standort all jener Exemplare aus, die
+--„verfügbar“ sind und deren Autor aus der UK ist.
+SELECT Buch.bTitle, Autor.aNachname, Exemplar.eStandort
+FROM Exemplar
+INNER JOIN Buch ON Exemplar.bID = Buch.BID
+INNER JOIN Autor ON Buch.aID = Autor.AID
+WHERE Exemplar.eStatus = 'verfuegbar'AND Autor.aCountry = 'UK';
+
+--21 
+SELECT Mitglied.mVorname, Mitglied.mNachname, Ausleihe.aDatum, Exemplar.eStatus
+FROM Ausleihe 
+INNER JOIN Mitglied ON Ausleihe.mID = Mitglied.MID
+INNER JOIN Exemplar ON Ausleihe.eID = Exemplar.EID
+WHERE Mitglied.mAlter <= 15;

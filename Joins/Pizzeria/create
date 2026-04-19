@@ -1,0 +1,98 @@
+-- ============================================
+-- Pizzeria Übung 8 - INSERTS
+-- Passend zu deinem exakten CREATE TABLE
+-- ============================================
+
+INSERT INTO Standort (sName, sAdresse, sStadt) VALUES
+('Dominos Judenburg',    'Kaserngasse 4',          'Judenburg'),
+('Dominos Knittelfeld',  'Hauptplatz 12',          'Knittelfeld'),
+('Dominos Zeltweg',      'Bundesstraße 8',         'Zeltweg'),
+('Dominos Murau',        'Schillerstraße 3',       'Murau'),
+('Dominos Leoben',       'Franz-Josef-Straße 5',   'Leoben'),
+('Dominos Donawitz',     'Erzherzog-Johann-Str 2', 'Leoben'),
+('Dominos Bruck/Mur',    'Mittergasse 7',          'Bruck an der Mur'),
+('Dominos Kapfenberg',   'Grazer Straße 19',       'Kapfenberg'),
+('Dominos Mürzzuschlag', 'Wiener Straße 11',       'Mürzzuschlag'),
+('Dominos Kindberg',     'Hauptstraße 6',          'Kindberg');
+
+INSERT INTO Pizza (pName, plsVeggie) VALUES
+('Margherita',       1),
+('Quattro Formaggi', 1),
+('Diavola',          0),
+('Prosciutto',       0),
+('Salami',           0),
+('Funghi',           1),
+('Capricciosa',      0),
+('Hawaii',           0),
+('Tonno',            0),
+('Spinaci',          1),
+('BBQ Chicken',      0),
+('Veggie Queen',     1);
+
+INSERT INTO Mitarbeiter (mVorname, mNachname, mGEburtstag, mlsLeiter, sID) VALUES
+('Thomas',    'Müller',      1985, 1, 1),
+('Anna',      'Maier',       1992, 0, 1),
+('Stefan',    'Huber',       1988, 0, 1),
+('Maria',     'Gruber',      1979, 1, 2),
+('Klaus',     'Mayer',       1995, 0, 2),
+('Lisa',      'Moser',       1990, 0, 2),
+('David',     'Wagner',      1983, 1, 3),
+('Sandra',    'Pichler',     1997, 0, 3),
+('Michael',   'Bauer',       1986, 1, 4),
+('Julia',     'Schmid',      1993, 0, 4),
+('Georg',     'Leitner',     1975, 1, 5),
+('Eva',       'Berger',      1999, 0, 5),
+('Patrick',   'Koller',      1989, 0, 5),
+('Sabine',    'Mühlbauer',   1982, 1, 6),
+('Florian',   'Steiner',     1996, 0, 6),
+('Katharina', 'Mitteregger', 1991, 1, 7),
+('Markus',    'Hofer',       1987, 0, 8),
+('Nicole',    'Rainer',      1994, 1, 9),
+('Simon',     'Ortner',      1980, 0, 10),
+('Laura',     'Mandl',       1998, 1, 10);
+
+INSERT INTO Speissekarte (skPREIS, sKVerfügbar, sID, pID) VALUES
+(8.90,  1, 1,  1),
+(11.50, 1, 1,  2),
+(12.90, 1, 1,  3),
+(10.50, 0, 1,  4),
+(9.90,  1, 2,  1),
+(13.50, 1, 2,  5),
+(11.90, 1, 2,  7),
+(10.90, 0, 2,  8),
+(9.50,  1, 3,  1),
+(12.00, 1, 3,  6),
+(14.90, 1, 4,  11),
+(10.00, 1, 4,  12),
+(11.00, 0, 5,  9),
+(12.50, 1, 5,  3),
+(13.00, 1, 5,  7),
+(9.90,  1, 6,  1),
+(11.50, 1, 6,  5),
+(10.50, 0, 7,  4),
+(12.90, 1, 8,  3),
+(9.50,  1, 9,  2),
+(11.90, 1, 10, 6),
+(13.90, 0, 10, 11);
+
+INSERT INTO Rechnung (rDatum, rGesamt, rZahlungsmittel) VALUES
+('2025-01-05', 18.80, 'Bar'),
+('2025-01-12', 24.40, 'Karte'),
+('2025-02-03', 11.50, 'Bar'),
+('2025-02-14', 32.90, 'Karte'),
+('2025-03-01', 9.90,  'Bar'),
+('2025-03-22', 21.80, 'Online'),
+('2025-04-08', 15.90, 'Bar'),
+('2025-04-19', 28.50, 'Karte'),
+('2025-05-02', 19.90, 'Bar'),
+('2025-05-17', 43.00, 'Karte'),
+('2025-06-06', 12.90, 'Online'),
+('2025-06-21', 25.80, 'Bar'),
+('2025-07-03', 17.50, 'Karte'),
+('2025-07-15', 38.90, 'Karte'),
+('2025-08-08', 22.40, 'Bar'),
+('2025-09-01', 14.90, 'Online'),
+('2025-09-25', 31.50, 'Karte'),
+('2025-10-10', 9.50,  'Bar'),
+('2025-11-03', 27.80, 'Karte'),
+('2025-12-24', 52.60, 'Online');
